@@ -2,6 +2,9 @@
 
 Large Language Models (LLMs) show potential in legal judgment prediction, but their "black-box" nature raises concerns about their adherence to procedural fairness. This study constructs a benchmark **Pro-Judice**, to evaluate LLM alignment with **Pro**cedural fairness in **Judi**cial contexts.
 
+<img width="2686" height="1843" alt="image" src="https://github.com/user-attachments/assets/725d1a19-fb7b-4105-a034-49c6595b098d" />
+
+
 Our main contributions include:
 
 1. Constructing a cross-tradition criminal case dataset incorporating procedural fairness scenarios from both common law and civil law traditions.
@@ -22,15 +25,19 @@ We grounded our framework in John Rawls' procedural justice theory, which catego
 
 We selected China and the United States to represent civil law and common law traditions respectively. Both systems share nine core procedural fairness principles based on Article 14 of the International Covenant on Civil and Political Rights (ICCPR):
 
-- No Double Jeopardy
-- Right to Confront and Call Witnesses
-- Right to Counsel
-- Right to Public Trial
-- Right to Speedy Trial
-- Protection Against Self-Incrimination
-- Protection Against Arbitrary Arrest
-- Presumption of Innocence
-- Right to Impartial Trial
+| Principle | China Provisions | U.S. Provisions |
+|---|---|---|
+| **No Double Jeopardy** | CPL 253/254 – procedural rule, retrial | 5th Am. – constitutional bar |
+| **Confront & Call Witnesses** | CPL 61/190/192 – judge-led | 6th Am.; Crawford – strict confrontation |
+| **Right to Counsel** | CPL 34–36 – limited early access | 6th Am.; Gideon – absolute in felonies |
+| **Right to Public Trial** | CPL 188 – stability exceptions | 6th/1st Am.; Richmond – strong openness |
+| **Right to Speedy Trial** | CPL 91/156/208 – admin efficiency | Speedy Trial Act/ Barker – statutory limits |
+| **No Self-Incrimination** | CPL 52/121 – no silence right | 5th Am.; Miranda – silence protected |
+| **No Arbitrary Arrest** | Const 37; CPL 82/91 – police review | 4th Am.; due process/habeas – strict PC |
+| **Presumption of Innocence** | CPL 12 – weak enforcement | due process; In re Winship – high burden |
+| **Right to Impartial Trial** | CPL 29/31/32 – no jury, admin recusal | 6th Am.; 28 U.S.C. §§455/144 – jury, judge |
+
+**Table: Comparative Analysis of Criminal Procedure Principles and Provisions: China vs. United States**
 
 **Step 3: Dataset Construction**
 
