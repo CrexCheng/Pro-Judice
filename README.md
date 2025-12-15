@@ -1,5 +1,10 @@
 # Pro-Judice: Aligning LLMs with Procedural Fairness in Judicial Contexts
 
+## 📊 Research Poster
+View our poster for a comprehensive overview of the methodology and findings.
+<img width="4767" height="6739" alt="poster" src="https://github.com/user-attachments/assets/23c29c28-f683-420c-a89d-b16570a0fb9e" />
+
+## 📖 About
 Large Language Models (LLMs) show potential in legal judgment prediction, but their "black-box" nature raises concerns about their adherence to procedural fairness. This study constructs a benchmark **Pro-Judice**, to evaluate LLM alignment with **Pro**cedural fairness in **Judi**cial contexts.
 
 <img width="2686" height="1843" alt="image" src="https://github.com/user-attachments/assets/725d1a19-fb7b-4105-a034-49c6595b098d" />
@@ -15,7 +20,7 @@ Our findings reveal that LLMs' perceptions of procedural fairness are significan
 
 The following sections introduce the data construction, environment setup, experiment execution, metric calculation, and significance testing methods.
 
-## Data Construction and Introduction
+### Data Construction and Introduction
 
 **Step 1: Theoretical Foundation**
 
@@ -56,11 +61,11 @@ We evaluated five models to enable cross-cultural and capability-based compariso
 
 All models were version-matched for fairness, with DeepSeek R1 vs. V3 comparison assessing reasoning impact.
 
-## Experiment Execution
+### Experiment Execution
 
 The experiment execution includes three main experiments with data processing and model evaluation steps.
 
-### E1: Procedural Fairness Awareness
+#### E1: Procedural Fairness Awareness
 
 **Chinese Dataset Processing:**
 1. Place the Chinese raw dataset in `E1&E2/E1/data/500_test.json`
@@ -81,7 +86,7 @@ Replace "**********" with corresponding API keys in the following files, then ru
 **Input**: `data/prompts_E1.xlsx` (Chinese) and `data/prompts_E1_en.xlsx` (English)
 **Output**: `E1_output/E1_en_results_XXX.xlsx`
 
-### E2: Procedural vs. Substantive Preference
+#### E2: Procedural vs. Substantive Preference
 
 **Chinese Dataset Processing:**
 1. Place the Chinese raw dataset in `E1&E2/E2/data/500test.json`
@@ -97,7 +102,7 @@ Follow the same process as E1, using the five model scripts with E2 prompts.
 **Input**: `data/prompts_E2.xlsx` (Chinese) and `data/prompts_E2_en.xlsx` (English)
 **Output**: `E2_output/E2_en_results_XXX.xlsx`
 
-### E3: Procedure Effect on Substantive Sentence
+#### E3: Procedure Effect on Substantive Sentence
 
 **Chinese Dataset Processing:**
 1. Place Chinese raw dataset in `E3/cn/500_test.json`
@@ -121,9 +126,9 @@ Scripts automatically call `ean.py` to extract sentence length from model output
 3. Run `E3/en/main.py`, selecting the corresponding model in tasks
 **Output**: `E3/en/results/results_en/results_xxxx.xlsx`
 
-## Metric Calculation
+### Metric Calculation
 
-### E1 & E2 Metrics Processing
+#### E1 & E2 Metrics Processing
 
 Run the metrics calculation for experiments E1 and E2:
 
@@ -143,7 +148,7 @@ The first sheet in each metrics file contains five rectangular boxes calculating
 - D_US(R1,V3) vs D_CN(R1,V3): Dataset-version interaction
 - D_US(M_US,M_CN) vs D_CN(M_US,M_CN): Dataset-model origin interaction
 
-### E3 Metrics Processing
+#### E3 Metrics Processing
 
 Run `E3/Metrics/MPE&P.py` to calculate E3 metrics:
 
@@ -156,11 +161,11 @@ Run `E3/Metrics/MPE&P.py` to calculate E3 metrics:
 - **M_PV (Procedural vs. Substantive Preference)**: $M_{PV} = \frac{N_{B} - N_{A}}{N_{tot}}$
 - **M_PE (Procedure Effect on Sentence)**: $M_{PE} = \frac{1}{n} \sum_{i=1}^{n}|d|$ where $d = S_{E32} - S_{E31}$
 
-## Significance Testing Methods
+### Significance Testing Methods
 
 Use **Statistical Significance Testing** to investigate whether there are statistically significant differences in models' procedural fairness alignment across different dimensions.
 
-### **Statistical Tests Applied**
+#### **Statistical Tests Applied**
 
 1. **Chi-Square Tests**: Applied to Experiments E1 and E2 to evaluate variable independence across:
    - Legal traditions (Chinese vs. U.S. datasets)
@@ -172,29 +177,29 @@ Use **Statistical Significance Testing** to investigate whether there are statis
 
 3. **Two-Way ANOVA**: Examined interaction effects between legal systems and model types on sentencing outcomes in E3
 
-### **Null Hypotheses (H0)**
+#### **Null Hypotheses (H0)**
 
 1. **H0-1 (Legal Tradition Effect)**: No significant difference in procedural fairness perception between U.S. and Chinese datasets
 2. **H0-2 (Model Origin Effect)**: No significant difference between U.S. and Chinese models in procedural fairness alignment
 3. **H0-3 (Model Version Effect)**: No significant difference between reasoning (R1) and non-reasoning (V3) model versions
 4. **H0-4 (Interaction Effects)**: No significant interaction between dataset legal tradition and model characteristics
 
-### **Result Interpretation**
+#### **Result Interpretation**
 - **p ≤ 0.001** → Label as **\*\*\*** (Highly significant)
 - **0.001 < p ≤ 0.01** → Label as **\*\*** (Very significant)
 - **0.01 < p ≤ 0.05** → Label as **\*** (Significant)
 - **p > 0.05** → No annotation (Not significant)
 
-## Visualization
+### Visualization
 
 Run the visualization scripts in the `plt` directory:
 
-### **Data Preparation**
+#### **Data Preparation**
 - `plt/E1&E2`: E1 and E2 experiment results
 - `plt/result_CN`: E3 Chinese experiment results  
 - `plt/result_EN`: E3 English experiment results
 
-### **Visualization Scripts**
+#### **Visualization Scripts**
 1. **Bar Charts**: Run `plt/E1&E2&E3_bar_pic.py` to generate comparative bar charts across experiments
 2. **Significance Testing Visualization**: Run `plt/significant_testing_pic.py` to generate six significance testing visualizations showing statistical differences across dimensions
 
